@@ -201,6 +201,10 @@ script:
 
 after_success:
   - export CUTTER_VERSION=$(python ../scripts/get_version.py)
+  # Upload new strings to be translated
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_BRANCH" == "translate" ]]; then
+      ${TRAVIS_BUILD_DIR}/scripts/upload_translations.sh
+    ; fi
   - lrelease ../src/Cutter.pro
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       mkdir -p Cutter.app/Contents/Resources/translations &&
