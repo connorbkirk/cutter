@@ -6,6 +6,7 @@ branches:
   only:
   - master
   - debug
+  - pythonosx
   - /^v\d.*$/
   - /^deploy-test(-.*)?$/
 
